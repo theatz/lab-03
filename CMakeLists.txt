@@ -29,20 +29,15 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
-add_library(lab-03 INTERFACE
-        # enum your files and delete this comment
-        )
+add_library(lab-03 INTERFACE)
 
 
 target_include_directories(lab-03
         INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include
         )
 
-#target_link_libraries(tests ${PROJECT_NAME})
-
 if(BUILD_TESTS)
   add_executable(tests
-          # TODO: enum your files and delete this comment
           ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
           )
   target_link_libraries(tests GTest::gtest_main lab-03)
@@ -54,8 +49,8 @@ if(BUILD_COVERAGE)
   set(ENABLE_COVERAGE ON CACHE BOOL "Enable coverage build." FORCE)
   list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/tools/coverage/cmake")
   find_package(codecov)
-  add_coverage(lab-03)
   add_coverage(tests)
+  list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
   coverage_evaluate()
 endif()
 
