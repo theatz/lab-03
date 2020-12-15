@@ -99,11 +99,4 @@ TEST(test_method, swap_test) {
 TEST(test_is_move, assign_construct_test) {
   EXPECT_EQ(std::is_move_assignable<SharedPtr<int>>::value, true);
   EXPECT_EQ(std::is_move_constructible<SharedPtr<int>>::value, true);
-  EXPECT_EQ(std::is_move_assignable<SharedPtr<double>>::value, true);
-  EXPECT_EQ(std::is_move_constructible<SharedPtr<double>>::value,
-  true);
-  EXPECT_EQ(std::is_move_assignable<SharedPtr<Test_class>>::value,
-  true);
-  EXPECT_EQ(std::is_move_constructible<SharedPtr<Test_class>>::value,
-  true);
 }
