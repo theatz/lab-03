@@ -48,12 +48,6 @@ class Test_class
   int x;
 };
 
-TEST(test_operator, arrow_test) {
-  auto test_class_ptr = new Test_class;
-  test_class_ptr ->x = 227;
-  SharedPtr <Test_class> ptr(test_class_ptr);
-  EXPECT_EQ(ptr->x, test_class_ptr->x);
-}
 
 TEST(test_operator, equality_lvalue_test) {
   int *points = new int (227);
